@@ -1,5 +1,5 @@
 import React from 'react';
-import { css, cx } from 'emotion';
+import { css, cx } from '@emotion/css';
 import { spacing } from '@leafygreen-ui/tokens';
 import {
   H1,
@@ -41,6 +41,7 @@ const knobsConfig: KnobsConfigInterface<{
     options: [
       typeof window !== 'undefined' ? window.location.origin : '',
       'https://cloud.mongodb.com',
+      '/component/typography/guidelines',
     ],
     default: 'http://localhost:3000',
     label: 'href',
