@@ -43,6 +43,7 @@ const components: Array<Component> = [
   'confirmation-modal',
   'copyable',
   'expandable-card',
+  'form-footer',
   'icon',
   'icon-button',
   'inline-definition',
