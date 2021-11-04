@@ -1,4 +1,6 @@
-import createEmotion, { Options } from '@emotion/css/create-instance';
+import createEmotion, { Options } from '@emotion/css/create-instance/';
+import { prefixer } from 'stylis';
+import { logicalPropertiesPolyfil } from './logicalPropertiesPolyfil';
 
 // In case the original emotion, and create-emotion packages become unsupported,
 // we should consider implementing our own wrapper around createCache like what's
@@ -9,6 +11,11 @@ function createEmotionInstance() {
   const config: Options = {
     key: 'leafygreen-ui',
     prepend: true,
+    stylisPlugins: [
+      /// @ts-expect-error
+      prefixer,
+      logicalPropertiesPolyfil,
+    ],
   };
 
   return createEmotion(config);
