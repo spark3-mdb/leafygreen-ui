@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { css, cx } from '@leafygreen-ui/emotion';
-import LeafygreenProvider from '@leafygreen-ui/leafygreen-provider';
 import Icon from '@leafygreen-ui/icon';
 import {
   Combobox,
@@ -45,19 +44,15 @@ const knobsConfig: KnobsConfigInterface<{
 
 export default function SelectLiveExample() {
   return (
-    <div>
-      <LeafygreenProvider>
-        <LiveExample knobsConfig={knobsConfig}>
-            {knobs =>
-              knobs.multiselect ? (
-                <MultiSelect knobs={knobs} />
-              ) : (
-                <SingleSelect knobs={knobs} />
-              )
-            }
-        </LiveExample>
-      </LeafygreenProvider>
-    </div>
+    <LiveExample knobsConfig={knobsConfig}>
+      {knobs =>
+        knobs.multiselect ? (
+          <MultiSelect knobs={knobs} />
+        ) : (
+          <SingleSelect knobs={knobs} />
+        )
+      }
+    </LiveExample>
   );
 }
 
@@ -67,7 +62,6 @@ function SingleSelect({
   const [isError, setIsError] = useState(false);
 
   const handleChange = (value: string | null) => {
-    console.log(value);
     if (value === 'pomegranate') {
       setIsError(true);
     } else {
@@ -77,11 +71,9 @@ function SingleSelect({
 
   return (
     <div
-      className={cx(
-        css`
-          width: 384px;
-      `
-      )}
+      className={css`
+        width: 384px;
+      `}
     >
       <Combobox
         multiselect={false}
@@ -98,7 +90,11 @@ function SingleSelect({
         <ComboboxOption value="carrot" displayName="Carrot" />
         <ComboboxOption value="dragonfruit" displayName="Dragon fruit" />
         <ComboboxOption value="eggplant" displayName="Eggplant" />
-        <ComboboxOption value="pomegranate" displayName="Pomegranate" glyph={<Icon glyph="Warning" />} />
+        <ComboboxOption
+          value="pomegranate"
+          displayName="Pomegranate"
+          glyph={<Icon glyph="Warning" />}
+        />
       </Combobox>
     </div>
   );
@@ -112,7 +108,7 @@ function MultiSelect({
       className={cx(
         css`
           width: 384px;
-      `
+        `,
       )}
     >
       <Combobox
@@ -130,7 +126,7 @@ function MultiSelect({
         <ComboboxGroup label="Peppers">
           <ComboboxOption value="cayenne" displayName="Cayenne" />
           <ComboboxOption value="ghost-pepper" displayName="Ghost pepper" />
-          <ComboboxOption value="habanero" displayName="Habanero"/>
+          <ComboboxOption value="habanero" displayName="Habanero" />
           <ComboboxOption value="jalapeno" displayName="Jalapeño" />
           <ComboboxOption value="red-pepper" displayName="Red pepper" />
           <ComboboxOption value="scotch-bonnet" displayName="Scotch bonnet" />
